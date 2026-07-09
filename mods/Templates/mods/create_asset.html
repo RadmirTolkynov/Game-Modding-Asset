@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить Модификацию | Мод-Каталог</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            background-color: #121214; 
+            color: #e0e0e6; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px 0;
+        }
+        
+        .form-container {
+            background: #1a1a1e;
+            border: 1px solid #2a2a30;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h2 { 
+            margin-top: 0; 
+            margin-bottom: 24px; 
+            color: #ffffff; 
+            text-align: center;
+        }
+
+        /* Стилизация полей формы */
+        .form-container p {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-container label {
+            color: #b1b1b8;
+            font-size: 0.95em;
+            font-weight: bold;
+        }
+
+        /* Стилизация текстовых полей, выпадающих списков (Select) и TextArea */
+        .form-container input[type="text"],
+        .form-container textarea,
+        .form-container select {
+            background: #212126;
+            border: 1px solid #30363d;
+            padding: 10px 14px;
+            border-radius: 6px;
+            color: #ffffff;
+            font-size: 1em;
+            transition: border-color 0.2s;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-container textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-container input:focus,
+        .form-container textarea:focus,
+        .form-container select:focus {
+            outline: none;
+            border-color: #58a6ff;
+        }
+
+        /* Особый стиль для поля выбора файла */
+        .form-container input[type="file"] {
+            color: #b1b1b8;
+            margin-top: 5px;
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background: #238636;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+            margin-top: 25px;
+        }
+
+        .btn-submit:hover {
+            background: #2ea043;
+        }
+        
+        .back-home {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #8b949e;
+            text-decoration: none;
+        }
+        .back-home:hover { color: #ffffff; }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Добавить новую модификацию</h2>
+        
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            {{ form.as_p }}
+            
+            <button type="submit" class="btn-submit">Опубликовать мод</button>
+        </form>
+        
+        <a href="{% url 'home' %}" class="back-home">← Отмена и назад</a>
+    </div>
+
+</body>
+</html>
